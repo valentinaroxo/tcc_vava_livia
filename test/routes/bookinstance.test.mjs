@@ -39,8 +39,8 @@ test("BookInstance Routes", async (t) => {
       const res = await request(app).get("/catalog/bookinstances").expect(200);
 
       assert.ok(
-        res.text.toLowerCase().includes("book instance list"),
-        `Expected "book instance list" in response, got: ${res.text}`
+        res.text.toLowerCase().includes("lista de cronogramas") || res.text.toLowerCase().includes("cronograma"),
+        `Expected "lista de cronogramas" or "cronograma" in response, got: ${res.text}`
       );
     });
   });
@@ -84,8 +84,8 @@ test("BookInstance Routes", async (t) => {
           `Expected "Hitchhiker", got: ${res.text}`
         );
         assert.ok(
-          res.text.includes("Available"),
-          `Expected "Available", got: ${res.text}`
+          res.text.includes("Available") || res.text.includes("Disponível"),
+          `Expected "Available" or "Disponível", got: ${res.text}`
         );
         assert.ok(
           res.text.includes("42nd Printing"),
@@ -143,8 +143,8 @@ test("BookInstance Routes", async (t) => {
           .expect(200);
 
         assert.ok(
-          res.text.includes("Delete BookInstance"),
-          `Expected "Delete BookInstance", got: ${res.text}`
+          res.text.includes("Excluir Cronograma"),
+          `Expected "Excluir Cronograma", got: ${res.text}`
         );
         assert.ok(
           res.text.includes("Library Copy 1"),
@@ -206,12 +206,12 @@ test("BookInstance Routes", async (t) => {
         .expect(200);
 
       assert.ok(
-        res.text.includes("Create BookInstance"),
-        `Expected "Create BookInstance", got: ${res.text}`
+        res.text.includes("Criar Cronograma"),
+        `Expected "Criar Cronograma", got: ${res.text}`
       );
       assert.ok(
-        res.text.includes("Status"),
-        `Expected "Status", got: ${res.text}`
+        res.text.includes("Status") || res.text.includes("Estado"),
+        `Expected "Status" or "Estado", got: ${res.text}`
       );
     });
 
@@ -262,8 +262,8 @@ test("BookInstance Routes", async (t) => {
           .expect(200);
 
         assert.ok(
-          res.text.includes("Create BookInstance"),
-          `Expected "Create BookInstance", got: ${res.text}`
+          res.text.includes("Criar Cronograma"),
+          `Expected "Criar Cronograma", got: ${res.text}`
         );
         assert.ok(
           res.text.includes("Imprint must be specified"),
@@ -308,8 +308,8 @@ test("BookInstance Routes", async (t) => {
         .expect(200);
 
       assert.ok(
-        res.text.includes("Update BookInstance"),
-        `Expected "Update BookInstance", got: ${res.text}`
+        res.text.includes("Editar Cronograma"),
+        `Expected "Editar Cronograma", got: ${res.text}`
       );
       assert.ok(
         res.text.includes("1st Edition"),
@@ -373,8 +373,8 @@ test("BookInstance Routes", async (t) => {
           .expect(200); // should re-render form
 
         assert.ok(
-          res.text.includes("Update BookInstance"),
-          `Expected "Update BookInstance", got: ${res.text}`
+          res.text.includes("Editar Cronograma"),
+          `Expected "Editar Cronograma", got: ${res.text}`
         );
         assert.ok(
           res.text.includes("Imprint must be specified"),

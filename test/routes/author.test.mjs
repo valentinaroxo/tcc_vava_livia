@@ -38,8 +38,8 @@ test("Author Routes", async (t) => {
       const res = await request(app).get("/catalog/authors").expect(200);
 
       assert.ok(
-        res.text.toLowerCase().includes("author list"),
-        `Expected "author list" in response, got: ${res.text}`
+        res.text.toLowerCase().includes("lista de alunos"),
+        `Expected "lista de alunos" in response, got: ${res.text}`
       );
     });
   });
@@ -101,8 +101,8 @@ test("Author Routes", async (t) => {
           .expect(200);
 
         assert.ok(
-          res.text.includes("Delete Author"),
-          `Expected "Delete Author", got: ${res.text}`
+          res.text.includes("Excluir Aluno"),
+          `Expected "Excluir Aluno", got: ${res.text}`
         );
         assert.ok(
           res.text.includes("Deletable"),
@@ -160,8 +160,8 @@ test("Author Routes", async (t) => {
       );
 
       assert.ok(
-        res.text.includes("Delete Author"),
-        `Expected "Delete Author", got: ${res.text}`
+        res.text.includes("Excluir Aluno"),
+        `Expected "Excluir Aluno", got: ${res.text}`
       );
       assert.ok(
         res.text.includes("Bound to Author"),
@@ -175,8 +175,8 @@ test("Author Routes", async (t) => {
     await t.test("should load the author create form", async () => {
       const res = await request(app).get("/catalog/author/create").expect(200);
       assert.ok(
-        res.text.includes("Create Author"),
-        `Expected "Create Author", got: ${res.text}`
+        res.text.includes("Criar Aluno"),
+        `Expected "Criar Aluno", got: ${res.text}`
       );
     });
 
@@ -233,8 +233,8 @@ test("Author Routes", async (t) => {
           .expect(200);
 
         assert.ok(
-          res.text.includes("Create Author"),
-          `Expected "Create Author", got: ${res.text}`
+          res.text.includes("Criar Aluno"),
+          `Expected "Criar Aluno", got: ${res.text}`
         );
         assert.ok(
           res.text.includes("First name must be specified"),
@@ -267,8 +267,8 @@ test("Author Routes", async (t) => {
         .expect(200);
 
       assert.ok(
-        res.text.includes("Update Author"),
-        `Expected "Update Author", got: ${res.text}`
+        res.text.includes("Editar Aluno"),
+        `Expected "Editar Aluno", got: ${res.text}`
       );
       assert.ok(
         res.text.includes("UpdateMe"),
@@ -320,20 +320,20 @@ test("Author Routes", async (t) => {
       async () => {
         const res = await request(app)
           .post(`/catalog/author/${author._id}/update`)
-          .type("form")
-          .send({
-            first_name: "", // Missing required
-            family_name: "",
-            date_of_birth: "1970-01-01",
-            date_of_death: "2020-01-01",
-            authorid: author._id.toString(),
-          })
-          .expect(200); // Should not redirect
+            .type("form")
+            .send({
+              first_name: "", // Missing required
+              family_name: "",
+              date_of_birth: "1970-01-01",
+              date_of_death: "2020-01-01",
+              authorid: author._id.toString(),
+            })
+            .expect(200); // Should not redirect
 
-        assert.ok(
-          res.text.includes("Update Author"),
-          `Expected "Update Author", got: ${res.text}`
-        );
+          assert.ok(
+            res.text.includes("Editar Aluno"),
+            `Expected "Editar Aluno", got: ${res.text}`
+          );
         assert.ok(
           res.text.includes("First name must be specified"),
           `Expected "First name must be specified", got: ${res.text}`

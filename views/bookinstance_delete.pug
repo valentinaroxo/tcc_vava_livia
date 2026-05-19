@@ -2,32 +2,34 @@ extends layout
 
 block content
 
+  - const statusLabels = {Available:'Disponível', Maintenance:'Manutenção', Loaned:'Emprestado', Reserved:'Reservado', Scheduled:'Agendado', Completed:'Concluído', Cancelled:'Cancelado'}
+
   h1= title
 
-  p #[strong Do you really want to delete this BookInstance?]
+  p #[strong Deseja realmente excluir este cronograma?]
 
   div(style="margin-left:20px")
 
     p #[strong ID]: #{bookinstance._id}
 
-    p #[strong Title: ]
+    p #[strong Esporte: ]
       a(href=bookinstance.book.url) #{bookinstance.book.title}
 
-    p #[strong Imprint:] #{bookinstance.imprint}
+    p #[strong Local/Detalhes:] #{bookinstance.imprint}
 
-    p #[strong Status: ]
+    p #[strong Estado: ]
       if bookinstance.status=='Available'
-        span.text-success #{bookinstance.status}
+        span.text-success #{statusLabels[bookinstance.status] || bookinstance.status}
       else if bookinstance.status=='Maintenance'
-        span.text-danger #{bookinstance.status}
+        span.text-danger #{statusLabels[bookinstance.status] || bookinstance.status}
       else
-        span.text-warning #{bookinstance.status}
+        span.text-warning #{statusLabels[bookinstance.status] || bookinstance.status}
 
     if bookinstance.status!='Available'
-      p #[strong Due back:] #{bookinstance.due_back_formatted}
+      p #[strong Data:] #{bookinstance.due_back_formatted}
 
   form(method='POST')
     div.form-group
       input#id.form-control(type='hidden',name='id', value=bookinstance._id )
 
-    button.btn.btn-primary(type='submit') Delete
+    button.btn.btn-primary(type='submit') Excluir

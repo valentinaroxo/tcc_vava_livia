@@ -22,7 +22,7 @@ exports.index = async (req, res, next) => {
   ]);
 
   res.render("index", {
-    title: "Local Library Home",
+    title: "IFEsporte - Início",
     book_count: numBooks,
     book_instance_count: numBookInstances,
     book_instance_available_count: numAvailableBookInstances,
@@ -38,7 +38,7 @@ exports.book_list = async (req, res, next) => {
     .populate("author")
     .exec();
 
-  res.render("book_list", { title: "Book List", book_list: allBooks });
+  res.render("book_list", { title: "Lista de Esportes", book_list: allBooks });
 };
 
 // Display detail page for a specific book.
@@ -72,7 +72,7 @@ exports.book_create_get = async (req, res, next) => {
   ]);
 
   res.render("book_form", {
-    title: "Create Book",
+    title: "Criar Esporte",
     authors: allAuthors,
     genres: allGenres,
   });
@@ -135,7 +135,7 @@ exports.book_create_post = [
         }
       }
       res.render("book_form", {
-        title: "Create Book",
+        title: "Criar Esporte",
         authors: allAuthors,
         genres: allGenres,
         book,
@@ -163,7 +163,7 @@ exports.book_delete_get = async (req, res, next) => {
   }
 
   res.render("book_delete", {
-    title: "Delete Book",
+    title: "Excluir Modalidade",
     book,
     book_instances: bookInstances,
   });
@@ -186,7 +186,7 @@ exports.book_delete_post = async (req, res, next) => {
   if (bookInstances.length > 0) {
     // Book has book_instances. Render in same way as for GET route.
     res.render("book_delete", {
-      title: "Delete Book",
+      title: "Excluir Modalidade",
       book,
       book_instances: bookInstances,
     });
@@ -220,7 +220,7 @@ exports.book_update_get = async (req, res, next) => {
   });
 
   res.render("book_form", {
-    title: "Update Book",
+    title: "Editar Modalidade",
     authors: allAuthors,
     genres: allGenres,
     book,
@@ -285,7 +285,7 @@ exports.book_update_post = [
         }
       }
       res.render("book_form", {
-        title: "Update Book",
+        title: "Editar Modalidade",
         authors: allAuthors,
         genres: allGenres,
         book,

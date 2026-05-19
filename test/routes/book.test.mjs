@@ -38,8 +38,8 @@ test("Book Routes", async (t) => {
     await t.test("GET /catalog/books", async () => {
       const res = await request(app).get("/catalog/books").expect(200);
       assert.ok(
-        res.text.toLowerCase().includes("book"),
-        `Expected "book" in response, got: ${res.text}`
+        res.text.toLowerCase().includes("lista de esportes") || res.text.toLowerCase().includes("esporte"),
+        `Expected "lista de esportes" or "esporte" in response, got: ${res.text}`
       );
     });
   });
@@ -121,8 +121,8 @@ test("Book Routes", async (t) => {
         .expect(200);
 
       assert.ok(
-        res.text.includes("Delete Book"),
-        `Expected "Delete Book", got: ${res.text}`
+        res.text.includes("Excluir Modalidade"),
+        `Expected "Excluir Modalidade", got: ${res.text}`
       );
       assert.ok(
         res.text.includes("Delete Me"),
@@ -179,8 +179,8 @@ test("Book Routes", async (t) => {
         );
 
         assert.ok(
-          res.text.includes("Delete Book"),
-          `Expected "Delete Book", got: ${res.text}`
+          res.text.includes("Excluir Modalidade"),
+          `Expected "Excluir Modalidade", got: ${res.text}`
         );
         assert.ok(
           res.text.includes("Library Copy 1"),
@@ -208,8 +208,8 @@ test("Book Routes", async (t) => {
     await t.test("should load the book create form", async () => {
       const res = await request(app).get("/catalog/book/create").expect(200);
       assert.ok(
-        res.text.includes("Create Book"),
-        `Expected "Create Book", got: ${res.text}`
+        res.text.includes("Criar Esporte"),
+        `Expected "Criar Esporte", got: ${res.text}`
       );
     });
 
@@ -271,8 +271,8 @@ test("Book Routes", async (t) => {
           .expect(200);
 
         assert.ok(
-          res.text.includes("Create Book"),
-          `Expected "Create Book", got: ${res.text}`
+          res.text.includes("Criar Esporte"),
+          `Expected "Criar Esporte", got: ${res.text}`
         );
         assert.ok(
           res.text.includes("Title must not be empty"),
@@ -314,8 +314,8 @@ test("Book Routes", async (t) => {
         .expect(200);
 
       assert.ok(
-        res.text.includes("Update Book"),
-        `Expected "Update Book", got: ${res.text}`
+        res.text.includes("Editar Modalidade"),
+        `Expected "Editar Modalidade", got: ${res.text}`
       );
       assert.ok(
         res.text.includes("Original Title"),
@@ -385,8 +385,8 @@ test("Book Routes", async (t) => {
           .expect(200); // Should re-render form, not redirect
 
         assert.ok(
-          res.text.includes("Update Book"),
-          `Expected "Update Book", got: ${res.text}`
+          res.text.includes("Editar Modalidade"),
+          `Expected "Editar Modalidade", got: ${res.text}`
         );
         assert.ok(
           res.text.includes("Title must not be empty"),

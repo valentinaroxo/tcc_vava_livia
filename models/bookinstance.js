@@ -6,10 +6,13 @@ const Schema = mongoose.Schema;
 const BookInstanceSchema = new Schema({
   book: { type: Schema.ObjectId, ref: "Book", required: true }, // Reference to the associated book.
   imprint: { type: String, required: true },
+  // new fields for IFEsporte
+  location: { type: String },
+  event_date: { type: Date },
   status: {
     type: String,
     required: true,
-    enum: ["Available", "Maintenance", "Loaned", "Reserved"],
+    enum: ["Available", "Maintenance", "Loaned", "Reserved", "Scheduled", "Completed", "Cancelled"],
     default: "Maintenance",
   },
   due_back: { type: Date, default: Date.now },

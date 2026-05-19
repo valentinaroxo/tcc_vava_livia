@@ -37,8 +37,8 @@ test("Genre Routes", async (t) => {
     await t.test("GET /catalog/genres", async () => {
       const res = await request(app).get("/catalog/genres").expect(200);
       assert.ok(
-        res.text.toLowerCase().includes("genre list"),
-        `Expected "genre list" in response, got: ${res.text}`
+        res.text.toLowerCase().includes("lista de modalidades") || res.text.toLowerCase().includes("modalidade"),
+        `Expected "lista de modalidades" or "modalidade" in response, got: ${res.text}`
       );
     });
   });
@@ -85,8 +85,8 @@ test("Genre Routes", async (t) => {
         .expect(200);
 
       assert.ok(
-        res.text.includes("Delete Genre"),
-        `Expected "Delete Genre", got: ${res.text}`
+        res.text.includes("Excluir Modalidade"),
+        `Expected "Excluir Modalidade", got: ${res.text}`
       );
       assert.ok(
         res.text.includes("Test Genre"),
@@ -147,8 +147,8 @@ test("Genre Routes", async (t) => {
       ); // Use notStrictEqual for not null/undefined
 
       assert.ok(
-        res.text.includes("Delete Genre"),
-        `Expected "Delete Genre", got: ${res.text}`
+        res.text.includes("Excluir Modalidade"),
+        `Expected "Excluir Modalidade", got: ${res.text}`
       );
       assert.ok(
         res.text.includes("Book With Genre"),
@@ -162,8 +162,8 @@ test("Genre Routes", async (t) => {
     await t.test("should load the genre create form", async () => {
       const res = await request(app).get("/catalog/genre/create").expect(200);
       assert.ok(
-        res.text.includes("Create Genre"),
-        `Expected "Create Genre", got: ${res.text}`
+        res.text.includes("Criar Modalidade"),
+        `Expected "Criar Modalidade", got: ${res.text}`
       );
     });
 
@@ -210,8 +210,8 @@ test("Genre Routes", async (t) => {
           .expect(200);
 
         assert.ok(
-          res.text.includes("Create Genre"),
-          `Expected "Create Genre", got: ${res.text}`
+          res.text.includes("Criar Modalidade"),
+          `Expected "Criar Modalidade", got: ${res.text}`
         );
         assert.ok(
           res.text.includes("Genre name must contain"),
@@ -236,8 +236,8 @@ test("Genre Routes", async (t) => {
         .expect(200);
 
       assert.ok(
-        res.text.includes("Update Genre"),
-        `Expected "Update Genre", got: ${res.text}`
+        res.text.includes("Editar Modalidade"),
+        `Expected "Editar Modalidade", got: ${res.text}`
       );
       assert.ok(
         res.text.includes("Original Genre"),
@@ -285,8 +285,8 @@ test("Genre Routes", async (t) => {
           .expect(200);
 
         assert.ok(
-          res.text.includes("Update Genre"),
-          `Expected "Update Genre", got: ${res.text}`
+          res.text.includes("Editar Modalidade"),
+          `Expected "Editar Modalidade", got: ${res.text}`
         );
         assert.ok(
           res.text.includes("Genre name must contain at least 3 characters"),

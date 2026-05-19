@@ -7,7 +7,7 @@ const { body, validationResult } = require("express-validator");
 exports.author_list = async (req, res, next) => {
   const allAuthors = await Author.find().sort({ family_name: 1 }).exec();
   res.render("author_list", {
-    title: "Author List",
+    title: "Lista de Alunos",
     author_list: allAuthors,
   });
 };
@@ -28,7 +28,7 @@ exports.author_detail = async (req, res, next) => {
   }
 
   res.render("author_detail", {
-    title: "Author Detail",
+    title: "Detalhe do Aluno",
     author,
     author_books: allBooksByAuthor,
   });
@@ -36,7 +36,7 @@ exports.author_detail = async (req, res, next) => {
 
 // Display Author create form on GET.
 exports.author_create_get = (req, res, next) => {
-  res.render("author_form", { title: "Create Author" });
+  res.render("author_form", { title: "Criar Aluno" });
 };
 
 // Handle Author create on POST.
@@ -81,7 +81,7 @@ exports.author_create_post = [
     if (!errors.isEmpty()) {
       // There are errors. Render form again with sanitized values/errors messages.
       res.render("author_form", {
-        title: "Create Author",
+        title: "Criar Aluno",
         author,
         errors: errors.array(),
       });
@@ -110,7 +110,7 @@ exports.author_delete_get = async (req, res, next) => {
   }
 
   res.render("author_delete", {
-    title: "Delete Author",
+    title: "Excluir Aluno",
     author,
     author_books: allBooksByAuthor,
   });
@@ -127,7 +127,7 @@ exports.author_delete_post = async (req, res, next) => {
   if (allBooksByAuthor.length > 0) {
     // Author has books. Render in same way as for GET route.
     res.render("author_delete", {
-      title: "Delete Author",
+      title: "Excluir Aluno",
       author,
       author_books: allBooksByAuthor,
     });
@@ -149,7 +149,7 @@ exports.author_update_get = async (req, res, next) => {
     return next(err);
   }
 
-  res.render("author_form", { title: "Update Author", author });
+  res.render("author_form", { title: "Editar Aluno", author });
 };
 
 // Handle Author update on POST.
@@ -195,7 +195,7 @@ exports.author_update_post = [
     if (!errors.isEmpty()) {
       // There are errors. Render the form again with sanitized values and error messages.
       res.render("author_form", {
-        title: "Update Author",
+        title: "Editar Aluno",
         author,
         errors: errors.array(),
       });

@@ -1,16 +1,14 @@
-# express-locallibrary-tutorial
+# IFEsporte
 
-Tutorial "Local Library" website written in in Node/Express.
+Aplicação IFEsporte para gerenciamento de modalidades, alunos, cronogramas e análises esportivas.
 
 ---
 
-This web application creates an online catalog for a small local library, where users can browse available books and manage their accounts.
+Este projeto é uma adaptação do tutorial original para um sistema de coordenação esportiva, com foco em professores e treinadores do Instituto Federal Catarinense.
 
-![A UML diagram showing the relation of database entities in this example repository](https://raw.githubusercontent.com/mdn/express-locallibrary-tutorial/main/public/images/Library%20Website%20-%20Mongoose_Express.png)
+![Diagrama de entidades do sistema IFEsporte](https://raw.githubusercontent.com/mdn/express-locallibrary-tutorial/main/public/images/Library%20Website%20-%20Mongoose_Express.png)
 
-For more information see the associated [MDN tutorial home page](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website).
-
-> **Note** The [auth branch](/../../tree/auth) in this repository implements an _unsupported_ and _undocumented_ version of the library with User Authentication and Authorization. This may be a useful starting point for some users.
+> **Nota**: o sistema foi convertido a partir do tutorial MDN de catálogo local, mas agora exibe telas e termos em português para uso esportivo.
 
 ## Quick Start
 
@@ -27,10 +25,10 @@ To get this project up and running locally on your computer:
 
    ```bash
    # Linux terminal
-   DEBUG=express-locallibrary-tutorial:* npm run devstart
+   DEBUG=ifesporte:* npm run devstart
 
    # Windows Powershell
-   $ENV:DEBUG = "express-locallibrary-tutorial:*"; npm start
+   $ENV:DEBUG = "ifesporte:*"; npm start
    ```
 
 4. Open a browser to <http://localhost:3000/> to open the library site.

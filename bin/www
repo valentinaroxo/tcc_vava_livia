@@ -5,7 +5,7 @@
  */
 
 var app = require("../app");
-var debug = require("debug")("express-locallibrary-tutorial:server");
+var debug = require("debug")("ifesporte:server");
 var http = require("http");
 
 /**
@@ -20,7 +20,7 @@ app.set("port", port);
  */
 const mongoose = require("mongoose");
 const dev_db_url =
-  "mongodb+srv://cooluser:coolpassword@cluster0.cojoign.mongodb.net/local_library?retryWrites=true&w=majority&appName=Cluster0";
+  "mongodb+srv://cooluser:coolpassword@cluster0.cojoign.mongodb.net/ifesporte?retryWrites=true&w=majority&appName=IFEsporte";
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 try {

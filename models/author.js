@@ -8,6 +8,14 @@ const AuthorSchema = new Schema({
   family_name: { type: String, required: true, maxLength: 100 },
   date_of_birth: { type: Date },
   date_of_death: { type: Date },
+  matricula: { type: String },
+  serie: { type: String },
+  sexo: { type: String, enum: ['M','F','Outro'] },
+  altura_cm: { type: Number },
+  peso_kg: { type: Number },
+  email: { type: String },
+  telefone: { type: String },
+  sports: [{ type: Schema.ObjectId, ref: 'Book' }],
 });
 
 // Virtual for author "full" name.
@@ -42,6 +50,14 @@ AuthorSchema.virtual("date_of_birth_yyyy_mm_dd").get(function () {
 
 AuthorSchema.virtual("date_of_death_yyyy_mm_dd").get(function () {
   return DateTime.fromJSDate(this.date_of_death).toISODate(); // format 'YYYY-MM-DD'
+});
+
+// Body mass index (IMC) virtual
+AuthorSchema.virtual('imc').get(function() {
+  if (!this.altura_cm || !this.peso_kg) return null;
+  const height_m = this.altura_cm / 100.0;
+  const imc = this.peso_kg / (height_m * height_m);
+  return Number(imc.toFixed(2));
 });
 
 // Export model.

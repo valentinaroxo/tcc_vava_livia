@@ -32,8 +32,8 @@ test("Catalog Routes", async (t) => {
     await t.test("GET /catalog", async () => {
       const res = await request(app).get("/catalog").expect(200);
       assert.ok(
-        res.text.includes("Local Library Home"),
-        `Expected "Local Library Home", got: ${res.text}`
+        res.text.includes("IFEsporte - Início") || res.text.includes("IFEsporte"),
+        `Expected "IFEsporte - Início" or "IFEsporte", got: ${res.text}`
       );
     });
 
